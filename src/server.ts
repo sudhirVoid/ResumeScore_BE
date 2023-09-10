@@ -1,6 +1,7 @@
 import Express from 'express'
 import morgan from 'morgan'
 import router from './router';
+
 const app = Express();
 
 app.use(morgan('dev'))

@@ -1,4 +1,5 @@
 import {Router} from 'express'
+import client from './db';
 
 
 const router: Router = Router();
@@ -8,8 +9,13 @@ const router: Router = Router();
 
  */
 
-router.post('/jobPost',(req, res)=>{
-    res.status(200).json({message: "Job post API"})
+router.post('/jobPost',async (req, res)=>{
+    const result = await client.query('SELECT * FROM qualifications')
+    res.status(200).json(
+        {
+            data: result.rows
+        },
+        )
 })
 
 export default router;
